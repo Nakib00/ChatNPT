@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatNPT</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body class="bg-gray-800 text-white min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="border-b border-gray-700 bg-gray-800 sticky top-0 z-10">
+        <div class="max-w-4xl mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/>
+                            <path d="M12 6c-3.309 0-6 2.691-6 6s2.691 6 6 6 6-2.691 6-6-2.691-6-6-6zm0 10c-2.206 0-4-1.794-4-4s1.794-4 4-4 4 1.794 4 4-1.794 4-4 4z"/>
+                        </svg>
+                    </div>
+                    <h1 class="text-lg font-semibold">ChatNPT</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Chat Area -->
+    <main class="flex-1 flex flex-col">
+        <div id="chat-container" class="flex-1 overflow-y-auto scrollbar-thin">
+            <div class="max-w-4xl mx-auto px-4 py-6">
+                <!-- Welcome Message (only shown when no messages) -->
+                <div id="welcome-screen" class="text-center py-12">
+                    <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/>
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl font-semibold mb-2">How can I help you today?</h2>
+                    <p class="text-gray-400">Ask me anything, and I'll do my best to help!</p>
+                </div>
+
+                <!-- Messages Container -->
+                <div id="messages" class="space-y-6">
+                    <!-- User Message Example -->
+                    <div class="flex justify-end message-fade-in">
+                        <div class="bg-blue-600 text-white rounded-2xl px-4 py-3 max-w-xs md:max-w-md lg:max-w-lg shadow-lg">
+                            <p class="text-sm">how are you</p>
+                        </div>
+                    </div>
+
+                    <!-- Assistant Message Example -->
+                    <div class="flex items-start space-x-3 message-fade-in">
+                        <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                            <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z"/>
+                            </svg>
+                        </div>
+                        <div class="bg-gray-700 rounded-2xl px-4 py-3 max-w-xs md:max-w-md lg:max-w-2xl shadow-lg">
+                            <p class="text-sm">I'm doing well, thank you for asking! I'm here and ready to help you with any questions or tasks you might have. How are you doing today?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="border-t border-gray-700 bg-gray-800 sticky bottom-0">
+            <div class="max-w-4xl mx-auto px-4 py-4">
+                <div class="relative">
+                    <div class="bg-gray-700 rounded-3xl border border-gray-600 focus-within:border-gray-500 transition-colors">
+                        <textarea
+                            id="message-input"
+                            placeholder="Message ChatGPT..."
+                            class="w-full bg-transparent resize-none outline-none px-4 py-3 pr-12 text-white placeholder-gray-400 max-h-32 min-h-[48px]"
+                            rows="1"
+                        ></textarea>
+                        <button
+                            id="send-button"
+                            class="absolute right-3 bottom-3 w-8 h-8 bg-gray-500 hover:bg-gray-400 rounded-full flex items-center justify-center transition-all duration-200 send-button-disabled"
+                            disabled
+                        >
+                            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <p class="text-xs text-gray-400 mt-2 text-center">
+                        ChatNPT can make mistakes. Check important info.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="/frontend/script.js"></script>
+</body>
+</html>
